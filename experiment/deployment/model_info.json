@@ -1,0 +1,10 @@
+{
+  "source_experiment": "adain_6000",
+  "best_step": 500,
+  "completed_updates": 2000,
+  "best_validation_loss": 9.32028421333858,
+  "content_train_count": 6000,
+  "style_train_count": 6000,
+  "decoder_sha256": "1de96fcef89760f76dbdf22a41d89126c68d6e790a740228a22b3ce67901f7d9",
+  "vgg_sha256": "804ca2835ecf7539f0cd2a7ac3c18ce81e6f8468969ae7117ac0c148d286bb4a"
+}

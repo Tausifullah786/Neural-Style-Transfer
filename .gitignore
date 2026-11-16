@@ -1,0 +1,26 @@
+myenv/
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example
+.aws/
+.codex/
+.agents/
+.pytest_cache/
+*.log
+
+# Keep datasets, uploads, checkpoints and logs local.
+/content_data/
+/style_data/
+/static/uploads/
+*.pth
+*.pt
+/experiment/*
+
+# Publish only the explicit, validated deployment snapshot.
+!/experiment/deployment/
+/experiment/deployment/*
+!/experiment/deployment/decoder_final.pth
+!/experiment/deployment/model_info.json

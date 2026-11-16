@@ -1,0 +1,26 @@
+# Paid 1-CPU / 2-GB service. Review the current price before creating it.
+services:
+  - type: web
+    name: neural-style-transfer
+    runtime: python
+    plan: 1c-2g
+    branch: main
+    autoDeployTrigger: commit
+    buildCommand: python -m pip install --no-cache-dir -r requirements.txt && python train.py --prepare_deployment
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 1 --timeout 180 --access-logfile - --error-logfile -
+    healthCheckPath: /healthz
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: NST_ENV
+        value: production
+      - key: NST_DECODER_PATH
+        value: experiment/deployment/decoder_final.pth
+      - key: NST_VGG_PATH
+        value: experiment/pretrained/vgg_normalised.pth
+      - key: NST_CPU_THREADS
+        value: "1"
+      - key: NST_UPLOAD_DIR
+        value: /tmp/neural-style-transfer-uploads
+      - key: PYTHONUNBUFFERED
+        value: "1"
